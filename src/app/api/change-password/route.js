@@ -11,7 +11,7 @@ export async function POST(request) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
-    await connectToDB();
+    await connectToDB(users);
     const user = await User.findOne({ username : email });
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
